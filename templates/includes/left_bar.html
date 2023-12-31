@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<nav class="col-md-2 d-none d-md-block bg-dark sidebar shadow" style="height: 91vh;">
+    <div class="sidebar-sticky mt-5">
+        <ul class="nav flex-column leftbar">
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'all' %}">
+                    <button class="custom-btn btn-8"><span>All Pages</span></button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'random' %}">
+                    <button class="custom-btn btn-8"><span>Random Page</span></button>
+                </a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'create' %}">
+                    <button class="custom-btn btn-8"><span>Create New Page</span></button>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>All Page</title>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="row">
+    {% if pages %}
+        {% for p in pages %}
+        <div class="col-3 m-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body bg-dark">
+                    <h5 class="card-title mb-4 ">
+                        <a href="{% url 'detail' p.slug %}" class="text-light">{{ p.title }}</a>
+                    </h5>
+                    {% if request.user.is_authenticated %}
+                        {% if p.user.username == request.user.username %}
+                        <a href="{% url 'edit' p.pk %}">
+                            <button  class="custom-btn btn-13">Edit</button>
+                        </a>
+
+                        <a href="{% url 'delete' p.pk %}">
+                            <button class="custom-btn btn-5"><span>Delete</span></button>
+                        </a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <center>
+        <h3>Pages not found</h3>
+        <a class="text-light" href="{% url 'create' %}">Create page</a>
+    </center>
+    {% endif %}
+</div>
+
+
+{% endblock %}

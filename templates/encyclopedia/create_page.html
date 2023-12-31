@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Create Page</title>
+{% endblock %}
+
+
+{% block content %}
+<center>
+    <div class="create_page w-50">
+        <h1>Create Page</h1>
+        <form method="post" class="p-3">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Title" required="required"/>
+            <textarea name="desc" rows="10" placeholder="Description" required="required"></textarea>
+            <button class="custom-btn btn-13 mt-2 w-50" type="submit">Create</button>
+        </form>
+    </div>
+</center>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>{{ page.title }}</title>
+{% endblock %}
+
+
+{% block content %}
+
+{% if page %}
+<div class="text-light">
+    <h2>{{ page.title }}</h2>
+    <hr>
+    <p>{{ markdown_to_html | safe }}</p>
+    <span class="text-info">Date: {{ page.created_at }}</span> <br>
+    <span class="text-warning">Author: {{ page.user.username }}</span>
+</div>
+{% else %}
+<center>
+    <h3 class="text-light">Page not found</h3>
+</center>
+{% endif %}
+
+
+{% endblock %}
